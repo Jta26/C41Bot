@@ -33,9 +33,10 @@ const init = (): void => {
     if (commandName == null) {
       return;
     }
+    console.log(msgCommands);
     const msgArgs = msgCommands.map((strArg: string) => {
-      const arg: CommandArgsItem = CommandArgsItem[strArg];
-      if (arg != undefined) {
+      if (Object.values(CommandArgsItem).some((item: string) => item === strArg.toLowerCase())) {
+        const arg: CommandArgsItem = <CommandArgsItem>strArg.toLowerCase();
         return arg;
       }
     });
