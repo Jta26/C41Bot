@@ -2,7 +2,7 @@ import Discord from 'discord.js';
 import CommandArgsItem from './arguments/commandArgs';
 import commandHandler from './commandHandler';
 import CommandListItem from './commands/commandListItem';
-
+import messaging from './messaging';
 const intents = [
   Discord.Intents.FLAGS.GUILDS,
   Discord.Intents.FLAGS.GUILD_MESSAGES,
@@ -20,6 +20,7 @@ const init = (): void => {
   client.on('ready', () => {
     console.log(`logged in as ${client.user.tag}`);
     commandHandler.init(client);
+    messaging.init(client);
   });
 
   client.on('message', msg => {
