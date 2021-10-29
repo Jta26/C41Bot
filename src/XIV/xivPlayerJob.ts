@@ -1,0 +1,15 @@
+export enum XIVPlayerJob {
+  PLD = 'Paladin',
+  WAR = 'Warrior',
+  GNB = 'Gunbreaker',
+  DRK = 'DarkKnight',
+  WHM = 'WhiteMage',
+  AST = 'Astrologian',
+  MNK = 'Monk',
+  DRG = 'Dragoon',
+  NIN = 'Ninja',
+  SAM = 'Samurai',
+  BRD = 'Bard',
+  MCH = 'Machinist',
+  DNC = 'Dancer',
+}
