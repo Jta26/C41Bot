@@ -1,4 +1,4 @@
-import { Client, DiscordAPIError, MessageEmbed } from 'discord.js';
+import { Client, MessageEmbed } from 'discord.js';
 import { ClearForOneGoogleFormBody } from '../webhooks/googleForms';
 
 let discordClient: Client;
@@ -20,6 +20,7 @@ export const sendClearForOneEmbed = (channelId: string, content: ClearForOneGoog
     .setAuthor('New Clear For One Request')
     .setColor('#00ab66')
     .addFields(
+      { name: 'Requested Fight', value: content.ultimate },
       { name: 'Player Job', value: content.playerJob },
       { name: 'Prog Point', value: content.progPoint },
       { name: 'Original Haiku', value: content.haiku },
