@@ -13,6 +13,8 @@ const CHOBIQUOTES = [
   'hee hee ha HEE HEE haa hee HEE',
   'fuck you dude',
   'can you help me find the b marker?',
+  'Yooo what is that debuff you got',
+  'CHEIN STRATEGEM',
 ];
 
 const command: Command = {
