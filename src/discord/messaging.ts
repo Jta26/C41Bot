@@ -6,28 +6,22 @@ let discordClient: Client;
 
 const init = (client: Client) => {
   discordClient = client;
+  sendTestEmbed();
   discordClient.on('interactionCreate', async interaction => {
     if (!interaction.isButton()) return;
     if (interaction.customId == 'MarkCleared') {
-      // update data storage here to show that we cleared this person.
+      const playerName = interaction.message.embeds[0].title;
+      const ultimate = interaction.message.embeds[0].fields[1].value;
       await interaction.update({
-        content: 'Successfully marked cleared',
+        content: `Successfully marked ${playerName} cleared in ${ultimate}.`,
         embeds: [],
         components: [],
-        fetchReply: true,
       });
-      setTimeout(async () => {
-        const msg = await interaction.channel.messages.fetch(interaction.message.id);
-        msg.delete();
-      }, 5000);
     } else if (interaction.customId == 'Remove') {
-      // delete this c41 from the data storage.
-
       await interaction.update({
         content: 'Removed',
         embeds: [],
         components: [],
-        fetchReply: true,
       });
       setTimeout(async () => {
         const msg = await interaction.channel.messages.fetch(interaction.message.id);
