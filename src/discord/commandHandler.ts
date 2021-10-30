@@ -13,7 +13,7 @@ const init = (client: Client) => {
 const execute = (message: Message, commandName: CommandListItem, args: CommandArgsItem[]) => {
   console.log(commandName);
   if (commands[commandName] == null) {
-    return;
+    commands[CommandListItem.NOTFOUND].execute(message, args);
   } else {
     commands[commandName].execute(message, args);
   }

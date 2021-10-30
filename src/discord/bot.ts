@@ -31,9 +31,6 @@ const init = (): void => {
     if (Object.values(CommandListItem).some((command: string) => command === msgCommands[0].toLowerCase())) {
       commandName = <CommandListItem>msgCommands.shift().toLowerCase();
     }
-    if (commandName == null) {
-      return;
-    }
     console.log(msgCommands);
     const msgArgs = msgCommands.map((strArg: string) => {
       if (Object.values(CommandArgsItem).some((item: string) => item === strArg.toLowerCase())) {
