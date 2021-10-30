@@ -8,6 +8,7 @@ export type ClearForOneGoogleFormBody = {
   ultimate: string;
   playerJob: XIVPlayerJob;
   progPoint: string;
+  daysAvailable: string;
   haiku: string;
 };
 
@@ -20,6 +21,10 @@ router.post('/', (req, res) => {
         ultimate: body['Which ultimate do you need help clearing?'],
         playerJob: XIVPlayerJob[body['What job do you play?']],
         progPoint: body['What is your current prog point?'],
+        daysAvailable:
+          body['What days are you available in the evening? We usually can fill groups between 3PM to 12PM PST.'].join(
+            ', ',
+          ),
         haiku: body['Please enter an original Haiku poem'],
       };
       // TODO: replace this with the channel we want

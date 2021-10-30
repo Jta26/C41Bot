@@ -15,11 +15,13 @@ const command: Command = {
       msg.reply('Info Needed: Missing fight selection. Please input UWU|UCoB after the command.');
     }
     if (args.includes(CommandArgsItem.UWU)) {
-      msg.author.send('To sign up to have The Devengers help you clear UWU, please fill out the following form.');
-      msg.author.send(formLink);
+      msg.author.send(
+        'To sign up to have The Devengers help you clear UWU, please fill out the following form. \n' + formLink,
+      );
     } else if (args.includes(CommandArgsItem.UCOB)) {
-      msg.author.send('To sign up to have The Devengers help you clear UCoB, please fill out the following form.');
-      msg.author.send(formLink);
+      msg.author.send(
+        'To sign up to have The Devengers help you clear UCoB, please fill out the following form. \n' + formLink,
+      );
     } else {
       msg.reply('Sorry, something went wrong.');
     }
