@@ -5,6 +5,8 @@ const router = express.Router();
 
 export type ClearForOneGoogleFormBody = {
   discordName: string;
+  characterName: string;
+  characterWorld: string;
   ultimate: string;
   playerJob: XIVPlayerJob;
   progPoint: string;
@@ -20,6 +22,8 @@ router.post('/', (req, res) => {
     try {
       const formInfo: ClearForOneGoogleFormBody = {
         discordName: body['What is your discord name?'],
+        characterName: body['What is your character name?'],
+        characterWorld: body['What world are you on?'],
         ultimate: body['Which ultimate do you need help clearing?'],
         playerJob: XIVPlayerJob[body['What job do you play?']],
         progPoint: body['What is your current prog point?'],

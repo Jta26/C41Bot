@@ -6,6 +6,7 @@ let discordClient: Client;
 
 const init = (client: Client) => {
   discordClient = client;
+  sendTestEmbed();
   discordClient.on('interactionCreate', async interaction => {
     if (!interaction.isButton()) return;
     if (interaction.customId == 'MarkCleared') {
@@ -33,6 +34,8 @@ const init = (client: Client) => {
 const sendTestEmbed = () => {
   const content: ClearForOneGoogleFormBody = {
     discordName: 'TestUser#1234',
+    characterName: 'intme inucob',
+    characterWorld: 'Sargatanas',
     ultimate: 'UWU',
     playerJob: XIVPlayerJob.AST,
     progPoint: 'Inception',
@@ -63,6 +66,7 @@ export const sendClearForOneEmbed = (channelId: string, content: ClearForOneGoog
   }
   const embed = new MessageEmbed()
     .setTitle(content.discordName)
+    .setDescription(`${content.characterName} on ${content.characterWorld}`)
     .setAuthor('New C41 Request')
     .setColor('#00ab66')
     .setImage(thumbnail)
