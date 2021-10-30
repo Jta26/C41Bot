@@ -6,7 +6,6 @@ let discordClient: Client;
 
 const init = (client: Client) => {
   discordClient = client;
-  sendTestEmbed();
   discordClient.on('interactionCreate', async interaction => {
     if (!interaction.isButton()) return;
     if (interaction.customId == 'MarkCleared') {
