@@ -11,9 +11,10 @@ const init = (client: Client) => {
     if (!interaction.isButton()) return;
     if (interaction.customId == 'MarkCleared') {
       const playerName = interaction.message.embeds[0].title;
+      const playerCharacter = interaction.message.embeds[0].description;
       const ultimate = interaction.message.embeds[0].fields[1].value;
       await interaction.update({
-        content: `Successfully marked ${playerName} cleared in ${ultimate}.`,
+        content: `${playerName} (${playerCharacter}) cleared in ${ultimate}.`,
         embeds: [],
         components: [],
       });
@@ -76,8 +77,7 @@ export const sendClearForOneEmbed = (channelId: string, content: ClearForOneGoog
       { name: 'Prog Point', value: content.progPoint, inline: true },
       { name: 'Days Available', value: content.daysAvailable },
       { name: 'Original Haiku', value: content.haiku },
-    ])
-    .setFooter('To view all current c41s, use !c41 (!c41 [ultimate] for a specific fight)');
+    ]);
   const buttonGroup = new MessageActionRow().addComponents(
     new MessageButton().setCustomId('MarkCleared').setLabel('Mark Cleared').setStyle('SUCCESS'),
     new MessageButton().setCustomId('Remove').setLabel('Remove').setStyle('DANGER'),
