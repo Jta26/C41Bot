@@ -32,7 +32,8 @@ router.post('/', (req, res) => {
       // TODO: replace this with the channel we want
       sendClearForOneEmbed(C41_CHANNEL_ID, formInfo);
       res.status(200).json({ message: 'success' });
-    } catch {
+    } catch (e) {
+      console.error('google form error:', e, req.body);
       res.status(300).json({ message: 'failed' });
     }
   }
