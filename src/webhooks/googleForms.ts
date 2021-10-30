@@ -12,6 +12,8 @@ export type ClearForOneGoogleFormBody = {
   haiku: string;
 };
 
+const C41_CHANNEL_ID = '904129279569305640';
+
 router.post('/', (req, res) => {
   if (req.body != null || req.body != {}) {
     const body = req.body;
@@ -28,7 +30,7 @@ router.post('/', (req, res) => {
         haiku: body['Please enter an original Haiku poem'],
       };
       // TODO: replace this with the channel we want
-      sendClearForOneEmbed('902767207682035773', formInfo);
+      sendClearForOneEmbed(C41_CHANNEL_ID, formInfo);
       res.status(200).json({ message: 'success' });
     } catch {
       res.status(300).json({ message: 'failed' });
