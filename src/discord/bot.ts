@@ -1,5 +1,4 @@
 import Discord from 'discord.js';
-import CommandArgsItem from './arguments/commandArgs';
 import commandHandler from './commandHandler';
 import CommandListItem from './commands/commandListItem';
 import messaging from './messaging';
@@ -31,15 +30,10 @@ const init = (): void => {
     if (Object.values(CommandListItem).some((command: string) => command === msgCommands[0].toLowerCase())) {
       commandName = <CommandListItem>msgCommands.shift().toLowerCase();
     }
-    console.log(msgCommands);
-    const msgArgs = msgCommands.map((strArg: string) => {
-      if (Object.values(CommandArgsItem).some((item: string) => item === strArg.toLowerCase())) {
-        const arg: CommandArgsItem = <CommandArgsItem>strArg.toLowerCase();
-        return arg;
-      }
-    });
-
-    commandHandler.execute(msg, commandName, msgArgs);
+    for (let i = 0; i < msgCommands.length; i++) {
+      msgCommands[i] = msgCommands[i].toLowerCase();
+    }
+    commandHandler.execute(msg, commandName, msgCommands);
   });
 
   client.login(process.env.DISCORD_BOT_TOKEN);

@@ -1,5 +1,4 @@
 import { Message } from 'discord.js';
-import CommandArgsItem from '../arguments/commandArgs';
 import CommandListItem from './commandListItem';
 import Command from './types/CommandType';
 
@@ -20,7 +19,7 @@ const CHOBIQUOTES = [
 const command: Command = {
   name: CommandListItem.SUMMON,
   description: 'get a random chobi-quote from Robo-Chobi',
-  execute: (msg: Message, args: CommandArgsItem[]) => {
+  execute: (msg: Message, args: string[]) => {
     const randomQuote = CHOBIQUOTES[Math.floor(Math.random() * CHOBIQUOTES.length)];
     msg.reply(randomQuote);
   },
