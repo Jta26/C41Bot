@@ -5,6 +5,7 @@ export enum XIVPlayerJob {
   DRK = 'Dark Knight',
   WHM = 'White Mage',
   AST = 'Astrologian',
+  SCH = 'Scholar',
   MNK = 'Monk',
   DRG = 'Dragoon',
   NIN = 'Ninja',
@@ -12,4 +13,5 @@ export enum XIVPlayerJob {
   BRD = 'Bard',
   MCH = 'Machinist',
   DNC = 'Dancer',
+  BLM = 'Black Mage',
 }
