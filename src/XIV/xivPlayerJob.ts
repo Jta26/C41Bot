@@ -14,4 +14,6 @@ export enum XIVPlayerJob {
   MCH = 'Machinist',
   DNC = 'Dancer',
   BLM = 'Black Mage',
+  SMN = 'Summoner',
+  RDM = 'Red Mage',
 }
