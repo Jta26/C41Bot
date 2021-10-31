@@ -1,4 +1,4 @@
-import { Client, MessageActionRow, MessageButton, MessageEmbed } from 'discord.js';
+import { Client, MessageActionRow, MessageButton, MessageEmbed, User } from 'discord.js';
 import { ClearForOneGoogleFormBody } from '../webhooks/googleForms';
 import { XIVPlayerJob } from '../XIV/xivPlayerJob';
 
@@ -53,6 +53,17 @@ export const sendMessageToChannel = (channelId: string, message: string) => {
   }
 };
 
+export const sendTextMessageToUser = async (userTag: string, message: string) => {
+  const user = discordClient.users.cache.find((cacheUser: User) => {
+    return cacheUser.tag == userTag;
+  });
+  if (user != null) {
+    user.send(message);
+  } else {
+    console.warn('Attempted to send text message to user, but user could not be found. Message:', message);
+  }
+};
+
 export const sendClearForOneEmbed = (channelId: string, content: ClearForOneGoogleFormBody) => {
   let thumbnail;
   if (content.ultimate == 'TEA') {
@@ -85,6 +96,10 @@ export const sendClearForOneEmbed = (channelId: string, content: ClearForOneGoog
   const channel = discordClient.channels.cache.get(channelId);
   if (channel.isText()) {
     channel.send({ embeds: [embed], components: [buttonGroup] });
+    sendTextMessageToUser(
+      content.discordName,
+      'Thanks for submitting!  A Devenger will reach out when we have time. (we usually run every day)',
+    );
   }
 };
 
